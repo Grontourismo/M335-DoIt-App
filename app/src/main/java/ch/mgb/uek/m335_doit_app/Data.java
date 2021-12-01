@@ -15,7 +15,7 @@ import ch.mgb.uek.m335_doit_app.entity.ToDo;
 
 public class Data {
     private static ArrayList<ToDo> todos = new ArrayList<>();
-    private static final String JSON_FILENAME = "";
+    private static final String JSON_FILEPATH = "ch/mgb/uek/m335_doit_app/data/todos.json";
 
     public static void createNewTodo(String title, LocalDate dueDate){
         todos.add(new ToDo(title, dueDate));
@@ -29,7 +29,7 @@ public class Data {
         boolean bool = true;
         try {
             Gson gson = new Gson();
-            gson.toJson(todos, new FileWriter(JSON_FILENAME));
+            gson.toJson(todos, new FileWriter(JSON_FILEPATH));
         } catch (IOException e) {
             bool = false;
             e.printStackTrace();
@@ -41,7 +41,7 @@ public class Data {
         boolean bool = true;
         try {
             Gson gson = new Gson();
-            JsonReader reader = new JsonReader(new FileReader(JSON_FILENAME));
+            JsonReader reader = new JsonReader(new FileReader(JSON_FILEPATH));
             todos = gson.fromJson(reader, new TypeToken<ArrayList<ToDo>>(){}.getType());
         } catch (FileNotFoundException e) {
             bool = false;
@@ -50,11 +50,28 @@ public class Data {
         return bool;
     }
 
-    public static int getNextTodoId(){
-        return todos.size();
+    public static ArrayList<ToDo> getTodosOfToday(boolean isFinished){
+        ArrayList<ToDo> returnToDos = new ArrayList<>();
+        for (ToDo todo : todos){
+            LocalDate test = LocalDate.now();
+            if (todo.getDueDate().equals(LocalDate.now()) && todo.isFinished() == isFinished) {
+                returnToDos.add(todo);
+            }
+        }
+        return returnToDos;
     }
 
-    public static ArrayList<ToDo> getTodos() {
-        return todos;
+    public static ArrayList<ToDo> getTodos(boolean isFinished){
+        ArrayList<ToDo> returnToDos = new ArrayList<>();
+        for (ToDo todo : todos){
+            if (todo.isFinished() == isFinished) {
+                returnToDos.add(todo);
+            }
+        }
+        return returnToDos;
+    }
+
+    public static int getNextTodoId(){
+        return todos.size() + 1;
     }
 }

@@ -5,7 +5,12 @@
       <map>
         <entry key="..\:/Users/Vincent/Desktop/ZLI/M335/Projekt/Code/M335DoItApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
         <entry key="..\:/Users/Vincent/Desktop/ZLI/M335/Projekt/Code/M335DoItApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
-        <entry key="..\:/Users/Vincent/Desktop/ZLI/M335/Projekt/Code/M335DoItApp/app/src/main/res/layout/activity_main.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/Vincent/Desktop/ZLI/M335/Projekt/Code/M335DoItApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Vincent/Desktop/ZLI/M335/Projekt/Code/M335DoItApp/app/src/main/res/layout/activity_todo.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Vincent/Desktop/ZLI/M335/Projekt/Code/M335DoItApp/app/src/main/res/layout/activity_todo_form.xml" value="0.264" />
+        <entry key="..\:/Users/Vincent/Desktop/ZLI/M335/Projekt/Code/M335DoItApp/app/src/main/res/layout/adapter_view_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Vincent/Desktop/ZLI/M335/Projekt/Code/M335DoItApp/app/src/main/res/layout/fragment_todo.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Vincent/Desktop/ZLI/M335/Projekt/Code/M335DoItApp/app/src/main/res/layout/show_todos.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/Vincent/Desktop/ZLI/M335/Projekt/Code/M335DoItApp/app/src/main/res/menu/menu_main.xml" value="0.25416666666666665" />
       </map>
     </option>

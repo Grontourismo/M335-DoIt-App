@@ -8,6 +8,7 @@ public class ToDo {
     private int id;
     private String title;
     private LocalDate dueDate;
+    private boolean finished = false;
 
     public ToDo(String title, LocalDate dueDate) {
         this.title = title;
@@ -24,6 +25,10 @@ public class ToDo {
         this.id = Data.getNextTodoId();
     }
 
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }
+
     public int getId() {
         return id;
     }
@@ -34,5 +39,9 @@ public class ToDo {
 
     public LocalDate getDueDate() {
         return dueDate;
+    }
+
+    public boolean isFinished() {
+        return finished;
     }
 }

@@ -23,7 +23,11 @@ public class TodoFormActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent mainIntent = getIntent();
-        type = TodoType.valueOf(mainIntent.getStringExtra("todoType"));
+        try {
+            type = TodoType.valueOf(mainIntent.getStringExtra("todoType"));
+        } catch (NullPointerException e){
+            type = TodoType.TODAY;
+        }
         setContentView(R.layout.activity_todo_form);
     }
 

@@ -1,7 +1,14 @@
 <resources>
-    <string name="app_name">M335-DoIt-App</string>
+    <string name="app_name">DoIt!</string>
     <string name="createTodoButton">Show Todo form</string>
     <string name="AllToDos">Alle Todo\'s</string>
     <string name="TodayToDos">Heutige Todo\'s</string>
     <string name="NewToDo">Neuen Todo erstellen</string>
+    <string name="today">Heute</string>
+    <string name="today_done">Heute erledigt</string>
+    <string name="all">Alle</string>
+    <string name="all_done">Alle erledigt</string>
+    <string name="title">Titel</string>
+    <string name="date">Datum</string>
+    <string name="create">Erstellen</string>
 </resources>
