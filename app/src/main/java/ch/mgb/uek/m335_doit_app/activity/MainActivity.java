@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.time.LocalTime;
 
 import ch.mgb.uek.m335_doit_app.Data;
 import ch.mgb.uek.m335_doit_app.R;
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void setItems(){
         ListView view = findViewById(R.id.view);
+        LocalTime.parse(12 + ":" +34);
         ListView doneView = findViewById(R.id.doneView);
         if (type == TodoType.TODAY || type == null) {
             ((TextView) findViewById(R.id.stateTextView)).setText(R.string.today);
@@ -57,9 +61,12 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(0, 0);
     }
 
-    public void clicked(View view){
+    public void todoFormclicked(View view){
+        startTodoForm();
+    }
+
+    private void startTodoForm() {
         Intent intent = new Intent(this, TodoFormActivity.class);
-        intent.putExtra("todoType", type);
         startActivity(intent);
     }
 
@@ -67,5 +74,19 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    public void newTodoClicked(MenuItem item) {
+        startTodoForm();
+    }
+
+    public void todayToDosClicked(MenuItem item) {
+        type = TodoType.TODAY;
+        setItems();
+    }
+
+    public void allToDosClicked(MenuItem item) {
+        type = TodoType.ALL;
+        setItems();
     }
 }

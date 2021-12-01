@@ -2,20 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="ch.mgb.uek.m335_doit.MainActivity">
+    tools:context="ch.mgb.uek.m335_doit_app.activity.MainActivity">
     <item
         android:id="@+id/allToDos"
         android:orderInCategory="100"
         android:title="@string/AllToDos"
-        app:showAsAction="never" />
+        app:showAsAction="never"
+        android:onClick="allToDosClicked"/>
     <item
         android:id="@+id/todayToDos"
         android:orderInCategory="100"
         android:title="@string/TodayToDos"
-        app:showAsAction="never" />
+        app:showAsAction="never"
+        android:onClick="todayToDosClicked" />
     <item
         android:id="@+id/newTodo"
         android:orderInCategory="100"
         android:title="@string/NewToDo"
-        app:showAsAction="never" />
+        app:showAsAction="never"
+        android:onClick="newTodoClicked" />
 </menu>

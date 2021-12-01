@@ -53,7 +53,6 @@ public class Data {
     public static ArrayList<ToDo> getTodosOfToday(boolean isFinished){
         ArrayList<ToDo> returnToDos = new ArrayList<>();
         for (ToDo todo : todos){
-            LocalDate test = LocalDate.now();
             if (todo.getDueDate().equals(LocalDate.now()) && todo.isFinished() == isFinished) {
                 returnToDos.add(todo);
             }

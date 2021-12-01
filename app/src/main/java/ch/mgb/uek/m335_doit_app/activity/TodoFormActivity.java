@@ -17,17 +17,10 @@ import ch.mgb.uek.m335_doit_app.R;
 import ch.mgb.uek.m335_doit_app.TodoType;
 
 public class TodoFormActivity extends AppCompatActivity {
-    private TodoType type;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent mainIntent = getIntent();
-        try {
-            type = TodoType.valueOf(mainIntent.getStringExtra("todoType"));
-        } catch (NullPointerException e){
-            type = TodoType.TODAY;
-        }
         setContentView(R.layout.activity_todo_form);
     }
 
@@ -45,7 +38,7 @@ public class TodoFormActivity extends AppCompatActivity {
                 Data.createNewTodo(title, LocalDate.parse(date, formatter));
             }
             Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("todoType", type);
+            intent.putExtra("todoType", TodoType.ALL);
             startActivity(intent);
         }
     }
@@ -60,7 +53,11 @@ public class TodoFormActivity extends AppCompatActivity {
         if (!date.equals("")){
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
             try {
-                LocalDate.parse(date, formatter);
+                LocalDate localDate = LocalDate.parse(date, formatter);
+                if (!localDate.isAfter(LocalDate.now().minusDays(1))){
+                    dateET.setError("Datum kann frühstens heute sein");
+                    bool = false;
+                }
             } catch (DateTimeParseException e) {
                 dateET.setError("Muss in Datumformat sein (tt.MM.jjjj)");
                 bool = false;

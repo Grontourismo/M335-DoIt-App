@@ -17,7 +17,7 @@
         android:layout_marginBottom="16dp"
         android:contentDescription="@string/createTodoButton"
         app:srcCompat="@drawable/ic_baseline_add_24"
-        android:onClick="clicked"/>
+        android:onClick="todoFormclicked"/>
 
     <LinearLayout
         android:layout_width="match_parent"
