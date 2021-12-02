@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="30dp"
         android:orientation="vertical"
         android:textAlignment="center"
@@ -23,9 +23,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:labelFor="@id/titleInput"
             android:text="@string/title"
-            android:textSize="20sp"
-            android:labelFor="@id/titleInput"/>
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/titleInput"
@@ -33,33 +33,39 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:layout_marginBottom="10dp"
+            android:labelFor="@id/dateInput"
             android:text="@string/date"
-            android:textSize="20sp"
-            android:labelFor="@id/dateInput"/>
+            android:textSize="20sp" />
 
-        <EditText
+        <DatePicker
             android:id="@+id/dateInput"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:ems="10"
-            android:inputType="date"
             android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/errorTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0000" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="40dp"
             android:background="@color/primary"
-            android:text="@string/create"
-            android:onClick="clicked"/>
+            android:onClick="clicked"
+            android:text="@string/create" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,9 @@ package ch.mgb.uek.m335_doit_app.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
@@ -30,15 +32,15 @@ public class TodoFormActivity extends AppCompatActivity {
 
     public void clicked(View view){
         EditText titleET = findViewById(R.id.titleInput);
-        EditText dateET = findViewById(R.id.dateInput);
+        DatePicker dateET = findViewById(R.id.dateInput);
         String title = titleET.getText().toString();
-        String date = dateET.getText().toString();
+        String date = dateET.getDayOfMonth() + "." + (dateET.getMonth() + 1) + "." + dateET.getYear();
 
-        if (validate(title, date, titleET, dateET)){
+        if (validate(title, date, titleET)){
             if (date.equals("")){
                 Data.createNewTodo(title);
             }else{
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.M.yyyy");
                 Data.createNewTodo(title, LocalDate.parse(date, formatter));
             }
             Data.saveAllTodos(this);
@@ -52,7 +54,7 @@ public class TodoFormActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private boolean validate(String title, String date, EditText titleET, EditText dateET) {
+    private boolean validate(String title, String date, EditText titleET) {
         boolean bool = true;
         if (title.equals("") || title.length() == 0){
             titleET.setError("Darf nicht leer sein");
@@ -63,15 +65,16 @@ public class TodoFormActivity extends AppCompatActivity {
         }
 
         if (!date.equals("")){
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.M.yyyy");
             try {
                 LocalDate localDate = LocalDate.parse(date, formatter);
+                LocalDate test = LocalDate.now().minusDays(1);
                 if (!localDate.isAfter(LocalDate.now().minusDays(1))){
-                    dateET.setError("Datum kann frühstens heute sein");
+                    ((TextView) findViewById(R.id.errorTextView)).setText("Datum kann frühstens heute sein");
                     bool = false;
                 }
             } catch (DateTimeParseException e) {
-                dateET.setError("Muss in Datumformat sein (tt.MM.jjjj)");
+                ((TextView) findViewById(R.id.errorTextView)).setText("Muss in Datumformat sein (tt.MM.jjjj)");
                 bool = false;
             }
         }
