@@ -43,7 +43,7 @@ public class ToDoListAdapter extends ArrayAdapter<ToDo> {
         ((RadioButton) convertView.findViewById((R.id.todoRadioButton))).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getItem(position).setFinished(true);
+                getItem(position).setFinished(!getItem(position).isFinished());
                 Data.saveAllTodos(MainActivity.instance);
                 MainActivity.instance.setItems();
             }
