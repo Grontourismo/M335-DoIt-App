@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
+import ch.mgb.uek.m335_doit_app.Data;
 import ch.mgb.uek.m335_doit_app.activity.MainActivity;
 import ch.mgb.uek.m335_doit_app.entity.ToDo;
 import ch.mgb.uek.m335_doit_app.R;
@@ -43,6 +44,7 @@ public class ToDoListAdapter extends ArrayAdapter<ToDo> {
             @Override
             public void onClick(View v) {
                 getItem(position).setFinished(true);
+                Data.saveAllTodos(MainActivity.instance);
                 MainActivity.instance.setItems();
             }
         });

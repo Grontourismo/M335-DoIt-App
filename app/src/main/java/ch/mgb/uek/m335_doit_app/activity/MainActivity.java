@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         instance = this;
         Intent mainIntent = getIntent();
         try {
-            type = TodoType.valueOf(mainIntent.getParcelableExtra("todoType"));
+            type = (TodoType) mainIntent.getSerializableExtra("todoType");
         } catch (NullPointerException e){
             type = TodoType.TODAY;
         }
@@ -61,12 +61,13 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(0, 0);
     }
 
-    public void todoFormclicked(View view){
+    public void todoFormClicked(View view){
         startTodoForm();
     }
 
     private void startTodoForm() {
         Intent intent = new Intent(this, TodoFormActivity.class);
+        intent.putExtra("todoType", type);
         startActivity(intent);
     }
 

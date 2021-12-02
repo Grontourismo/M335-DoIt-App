@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,11 +18,14 @@ import ch.mgb.uek.m335_doit_app.R;
 import ch.mgb.uek.m335_doit_app.TodoType;
 
 public class TodoFormActivity extends AppCompatActivity {
+    private TodoType type;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo_form);
+        Intent mainIntent = getIntent();
+        type = (TodoType) mainIntent.getSerializableExtra("todoType");
     }
 
     public void clicked(View view){
@@ -38,10 +42,14 @@ public class TodoFormActivity extends AppCompatActivity {
                 Data.createNewTodo(title, LocalDate.parse(date, formatter));
             }
             Data.saveAllTodos(this);
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("todoType", TodoType.ALL);
-            startActivity(intent);
+            startLastActivity();
         }
+    }
+
+    private void startLastActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("todoType", type);
+        startActivity(intent);
     }
 
     private boolean validate(String title, String date, EditText titleET, EditText dateET) {

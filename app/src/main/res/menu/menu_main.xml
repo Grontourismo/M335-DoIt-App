@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ch.mgb.uek.m335_doit_app.activity.MainActivity">
+
     <item
         android:id="@+id/allToDos"
         android:orderInCategory="100"
