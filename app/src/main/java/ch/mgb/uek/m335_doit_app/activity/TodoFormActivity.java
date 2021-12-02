@@ -37,6 +37,7 @@ public class TodoFormActivity extends AppCompatActivity {
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
                 Data.createNewTodo(title, LocalDate.parse(date, formatter));
             }
+            Data.saveAllTodos(this);
             Intent intent = new Intent(this, MainActivity.class);
             intent.putExtra("todoType", TodoType.ALL);
             startActivity(intent);
@@ -47,6 +48,9 @@ public class TodoFormActivity extends AppCompatActivity {
         boolean bool = true;
         if (title.equals("") || title.length() == 0){
             titleET.setError("Darf nicht leer sein");
+            bool = false;
+        } else if (title.length() > 40){
+            titleET.setError("Titel darf nicht länger als 46 sein");
             bool = false;
         }
 

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,6 +36,9 @@ public class ToDoListAdapter extends ArrayAdapter<ToDo> {
         }
         ((RadioButton) convertView.findViewById((R.id.todoRadioButton))).setText(getItem(position).getTitle());
         ((RadioButton) convertView.findViewById((R.id.todoRadioButton))).setChecked(getItem(position).isFinished());
+        if (getItem(position).getDueDate() != null) {
+            ((TextView) convertView.findViewById((R.id.dateTV))).setText(getItem(position).getDueDate().toString());
+        }
         ((RadioButton) convertView.findViewById((R.id.todoRadioButton))).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

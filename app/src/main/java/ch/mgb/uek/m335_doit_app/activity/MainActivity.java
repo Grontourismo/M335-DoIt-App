@@ -25,10 +25,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Data.getAllTodos(this);
         instance = this;
         Intent mainIntent = getIntent();
         try {
-            type = TodoType.valueOf(mainIntent.getStringExtra("todoType"));
+            type = TodoType.valueOf(mainIntent.getParcelableExtra("todoType"));
         } catch (NullPointerException e){
             type = TodoType.TODAY;
         }
@@ -38,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void setItems(){
         ListView view = findViewById(R.id.view);
-        LocalTime.parse(12 + ":" +34);
         ListView doneView = findViewById(R.id.doneView);
         if (type == TodoType.TODAY || type == null) {
             ((TextView) findViewById(R.id.stateTextView)).setText(R.string.today);
