@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDate;
+
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
@@ -11,7 +13,14 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public void createTodo() {
+        Data.createNewTodo("Einkaufen gehen", LocalDate.now());
+        assertNotNull(Data.getTodos().get(0));
+    }
+
+    @Test
+    public void createTodoTitleOnly() {
+        Data.createNewTodo("Einkaufen gehen");
+        assertNotNull(Data.getTodos().get(0));
     }
 }

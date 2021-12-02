@@ -117,6 +117,10 @@ public class Data {
         return todos.size() + 1;
     }
 
+    public static ArrayList<ToDo> getTodos() {
+        return todos;
+    }
+
     static class LocalDateSerializer implements JsonSerializer<LocalDate> {
 
         @Override
