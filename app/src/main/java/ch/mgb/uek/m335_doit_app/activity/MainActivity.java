@@ -1,7 +1,7 @@
 package ch.mgb.uek.m335_doit_app.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +11,8 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.time.LocalTime;
-
 import ch.mgb.uek.m335_doit_app.Data;
+import ch.mgb.uek.m335_doit_app.Notifier;
 import ch.mgb.uek.m335_doit_app.R;
 import ch.mgb.uek.m335_doit_app.TodoType;
 import ch.mgb.uek.m335_doit_app.adabter.ToDoListAdapter;
@@ -35,6 +34,18 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_main);
         setItems();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        int taskCount = Data.getTodosOfToday(false).size();
+        if (taskCount > 0){
+            new Notifier(this).sendNotification(
+                    "DoIt! | Reminder", "Du hast noch " + Data.getTodosOfToday(false).size() + " Tasks die du heute erledigen musst!"
+                    , R.drawable.ic_baseline_done_all_24
+                    , NotificationCompat.PRIORITY_DEFAULT);
+        }
     }
 
     public void setItems(){
